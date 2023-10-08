@@ -1,12 +1,12 @@
-using SAPbobsCOM; //เพิ่ม namespace ของ SAP DI API
+using SAPbobsCOM; //เน€เธเธดเนเธก namespace เธเธญเธ SAP DI API
 
 namespace DemoInterfaceSAPB1
 {
     public partial class Form1 : Form
     {
-        private int ErrorCode; //ประกาศตัวแปร ErrorCode สำหรับเก็บค่า Error Code จาก SAP Business One
-        private string ErrorMessage; //ประกาศตัวแปร ErrorMessage สำหรับเก็บค่า Error Description จาก SAP Business One
-        private Company company; //ประกาศตัวแปร company ของประเภท Company
+        private int ErrorCode; //เธเธฃเธฐเธเธฒเธจเธ•เธฑเธงเนเธเธฃ ErrorCode เธชเธณเธซเธฃเธฑเธเน€เธเนเธเธเนเธฒ Error Code เธเธฒเธ SAP Business One
+        private string ErrorMessage; //เธเธฃเธฐเธเธฒเธจเธ•เธฑเธงเนเธเธฃ ErrorMessage เธชเธณเธซเธฃเธฑเธเน€เธเนเธเธเนเธฒ Error Description เธเธฒเธ SAP Business One
+        private Company company; //เธเธฃเธฐเธเธฒเธจเธ•เธฑเธงเนเธเธฃ company เธเธญเธเธเธฃเธฐเน€เธ เธ— Company
 
         public Form1()
         {
@@ -15,17 +15,17 @@ namespace DemoInterfaceSAPB1
 
         private void btn_TestLogin_Click(object sender, EventArgs e)
         {
-            bool result = SAPConnect(); //สร้างตัวแปร result และกำหนดค่าให้เท่ากับผลลัพธ์จากการเรียกเมธอด SAPConnect() ซึ่งจะคืนค่า true ถ้าเชื่อมต่อสำเร็จ และ false ถ้าเชื่อมต่อไม่สำเร็จ
+            bool result = SAPConnect(); //เธชเธฃเนเธฒเธเธ•เธฑเธงเนเธเธฃ result เนเธฅเธฐเธเธณเธซเธเธ”เธเนเธฒเนเธซเนเน€เธ—เนเธฒเธเธฑเธเธเธฅเธฅเธฑเธเธเนเธเธฒเธเธเธฒเธฃเน€เธฃเธตเธขเธเน€เธกเธเธญเธ” SAPConnect() เธเธถเนเธเธเธฐเธเธทเธเธเนเธฒ true เธ–เนเธฒเน€เธเธทเนเธญเธกเธ•เนเธญเธชเธณเน€เธฃเนเธ เนเธฅเธฐ false เธ–เนเธฒเน€เธเธทเนเธญเธกเธ•เนเธญเนเธกเนเธชเธณเน€เธฃเนเธ
 
-            if (result) //ตรวจสอบว่าเชื่อมต่อสำเร็จหรือไม่
+            if (result) //เธ•เธฃเธงเธเธชเธญเธเธงเนเธฒเน€เธเธทเนเธญเธกเธ•เนเธญเธชเธณเน€เธฃเนเธเธซเธฃเธทเธญเนเธกเน
             {
-                MessageBox.Show("Connected successfully!"); //หากเชื่อมต่อสำเร็จให้แสดง 'Connected successfully!" ใน Message Box
+                MessageBox.Show("Connected successfully!"); //เธซเธฒเธเน€เธเธทเนเธญเธกเธ•เนเธญเธชเธณเน€เธฃเนเธเนเธซเนเนเธชเธ”เธ 'Connected successfully!" เนเธ Message Box
             }
             else
             {
-                string error = string.Format(@"Coonected unsuccessfully!, Error: {0} - {1}", ErrorCode, ErrorMessage); //เก็บข้อความ error
+                string error = string.Format(@"Coonected unsuccessfully!, Error: {0} - {1}", ErrorCode, ErrorMessage); //เน€เธเนเธเธเนเธญเธเธงเธฒเธก error
 
-                MessageBox.Show(error); //แสดงข้อความ Error กรณีเชื่อมต่อไม่สำเร็จ
+                MessageBox.Show(error); //เนเธชเธ”เธเธเนเธญเธเธงเธฒเธก Error เธเธฃเธ“เธตเน€เธเธทเนเธญเธกเธ•เนเธญเนเธกเนเธชเธณเน€เธฃเนเธ
             }
         }
 
@@ -33,25 +33,25 @@ namespace DemoInterfaceSAPB1
         {
             company = new Company();
 
-            //กำหนดค่าพารามิเตอร์ให้กับ Instance company
-            company.Server = "MY-NOTEBOOK\\MSSQLSERVER2019"; //กำหนดชื่อ Server โดยจะเป็นที่เก็บ Database ของ Company สามารถดูได้จากหน้า Login ของ SAP B1
-            company.CompanyDB = "SBODemoAU"; //กำหนดชื่อฐานข้อมูลของ Company สามารถดูได้จากหน้า Login ของ SAP B1 ที่คอลัมน์ 'Database Name'
-            company.UserName = "manager"; //กำหนดชื่อผู้ใช้ SAP B1
-            company.Password = "1234"; //กำหนดรหัสผ่าน SAP B1
-            company.DbServerType = BoDataServerTypes.dst_MSSQL2019; //กำหนดประเภทของฐานข้อมูล
+            //เธเธณเธซเธเธ”เธเนเธฒเธเธฒเธฃเธฒเธกเธดเน€เธ•เธญเธฃเนเนเธซเนเธเธฑเธ Instance company
+            company.Server = "MY-NOTEBOOK\\MSSQLSERVER2019"; //เธเธณเธซเธเธ”เธเธทเนเธญ Server เนเธ”เธขเธเธฐเน€เธเนเธเธ—เธตเนเน€เธเนเธ Database เธเธญเธ Company เธชเธฒเธกเธฒเธฃเธ–เธ”เธนเนเธ”เนเธเธฒเธเธซเธเนเธฒ Login เธเธญเธ SAP B1
+            company.CompanyDB = "SBODemoAU"; //เธเธณเธซเธเธ”เธเธทเนเธญเธเธฒเธเธเนเธญเธกเธนเธฅเธเธญเธ Company เธชเธฒเธกเธฒเธฃเธ–เธ”เธนเนเธ”เนเธเธฒเธเธซเธเนเธฒ Login เธเธญเธ SAP B1 เธ—เธตเนเธเธญเธฅเธฑเธกเธเน 'Database Name'
+            company.UserName = "manager"; //เธเธณเธซเธเธ”เธเธทเนเธญเธเธนเนเนเธเน SAP B1
+            company.Password = "1234"; //เธเธณเธซเธเธ”เธฃเธซเธฑเธชเธเนเธฒเธ SAP B1
+            company.DbServerType = BoDataServerTypes.dst_MSSQL2019; //เธเธณเธซเธเธ”เธเธฃเธฐเน€เธ เธ—เธเธญเธเธเธฒเธเธเนเธญเธกเธนเธฅ
 
-            int result = company.Connect(); //ทำการเชื่อมต่อและเก็บค่าผลลัพธ์ในตัวแปร result
+            int result = company.Connect(); //เธ—เธณเธเธฒเธฃเน€เธเธทเนเธญเธกเธ•เนเธญเนเธฅเธฐเน€เธเนเธเธเนเธฒเธเธฅเธฅเธฑเธเธเนเนเธเธ•เธฑเธงเนเธเธฃ result
 
-            if (result == 0) //ตรวจสอบว่าค่าผลลัพธ์เป็น 0 หรือไม่ ซึ่งหมายถึงการเชื่อมต่อสำเร็จ
+            if (result == 0) //เธ•เธฃเธงเธเธชเธญเธเธงเนเธฒเธเนเธฒเธเธฅเธฅเธฑเธเธเนเน€เธเนเธ 0 เธซเธฃเธทเธญเนเธกเน เธเธถเนเธเธซเธกเธฒเธขเธ–เธถเธเธเธฒเธฃเน€เธเธทเนเธญเธกเธ•เนเธญเธชเธณเน€เธฃเนเธ
             {
                 Console.WriteLine("Connected successfully!");
 
                 return true;
             }
-            else //ในกรณีค่าผลลัพธ์ไม่เป็น 0 แสดงว่าเชื่อมต่อไม่สำเร็จ
+            else //เนเธเธเธฃเธ“เธตเธเนเธฒเธเธฅเธฅเธฑเธเธเนเนเธกเนเน€เธเนเธ 0 เนเธชเธ”เธเธงเนเธฒเน€เธเธทเนเธญเธกเธ•เนเธญเนเธกเนเธชเธณเน€เธฃเนเธ
             {
-                ErrorCode = company.GetLastErrorCode(); //รับรหัสข้อผิดพลาดล่าสุดจากออบเจ็กต์ company หลังจากการเรียกเมธอด Connect()
-                ErrorMessage = company.GetLastErrorDescription(); //รับข้อความบรรยายข้อผิดพลาดล่าสุดจากออบเจ็กต์ company หลังจากเรียกเมธอด Connect()
+                ErrorCode = company.GetLastErrorCode(); //เธฃเธฑเธเธฃเธซเธฑเธชเธเนเธญเธเธดเธ”เธเธฅเธฒเธ”เธฅเนเธฒเธชเธธเธ”เธเธฒเธเธญเธญเธเน€เธเนเธเธ•เน company เธซเธฅเธฑเธเธเธฒเธเธเธฒเธฃเน€เธฃเธตเธขเธเน€เธกเธเธญเธ” Connect()
+                ErrorMessage = company.GetLastErrorDescription(); //เธฃเธฑเธเธเนเธญเธเธงเธฒเธกเธเธฃเธฃเธขเธฒเธขเธเนเธญเธเธดเธ”เธเธฅเธฒเธ”เธฅเนเธฒเธชเธธเธ”เธเธฒเธเธญเธญเธเน€เธเนเธเธ•เน company เธซเธฅเธฑเธเธเธฒเธเน€เธฃเธตเธขเธเน€เธกเธเธญเธ” Connect()
 
                 Console.WriteLine("Connected unsuccessfully!");
 
